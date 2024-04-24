@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="013b00f2645f4ffcb8bf5e0ad270d7a1" Name="Diagram1">
+        <EntityTypeShape EntityType="HR_SYSModel.EmployeeDesignation" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.Employee" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.EmployeeType" Width="1.5" PointX="8.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.PayrollHeader" Width="1.5" PointX="5.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.SysDepartment" Width="1.5" PointX="8.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.SysGender" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.SysHoliday" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.UserAccessGranted" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.UserPasswordHistory" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.UserPermissionHistory" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.UserPermissionType" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.UserRole" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HR_SYSModel.UserStatus" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="HR_SYSModel.FK_UserAccessGranted_UserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="HR_SYSModel.FK_UserPasswordHistory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="HR_SYSModel.FK_UserPermissionHistory_UserPermissionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="HR_SYSModel.FK_UserPermissionHistory_UserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="HR_SYSModel.FK_UserPermissionHistory_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="HR_SYSModel.FK_Users_UserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="HR_SYSModel.FK_Users_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="HR_SYSModel.FK_Users_UserStatuses" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

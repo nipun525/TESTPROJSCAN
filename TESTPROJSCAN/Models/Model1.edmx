@@ -1,0 +1,780 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HR_SYSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmployeeDesignations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="EmployeeNo" Type="varchar" MaxLength="15" />
+          <Property Name="NicNo" Type="varchar" MaxLength="15" />
+          <Property Name="FullName" Type="varchar" MaxLength="300" />
+          <Property Name="NameWithInitials" Type="varchar" MaxLength="300" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="EmployeeTypeId" Type="int" />
+          <Property Name="GenderId" Type="int" />
+          <Property Name="DepartmentId" Type="int" />
+          <Property Name="DesignationId" Type="int" />
+          <Property Name="SalaryPackageId" Type="int" />
+          <Property Name="JoinedDate" Type="date" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="EmployeeTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="PayrollHeaders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="PayYear" Type="varchar" MaxLength="4" />
+          <Property Name="PayMonth" Type="varchar" MaxLength="3" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SysDepartments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SysGenders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SysHolidays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="UserAccessGranted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserRoleId" Type="int" />
+          <Property Name="MainMenuId" Type="int" />
+          <Property Name="InterMenuId" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPasswordHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="OldPassword" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserPermissionHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="UserRoleId" Type="int" />
+          <Property Name="InterMenuId" Type="int" />
+          <Property Name="PermissionTypeId" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserPermissionTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="UserRoleId" Type="int" />
+          <Property Name="UserStatusId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="10" />
+          <Property Name="Status" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserAccessGranted_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+          <End Role="UserAccessGranted" Type="Self.UserAccessGranted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccessGranted">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPasswordHistory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserPasswordHistory" Type="Self.UserPasswordHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPasswordHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissionHistory_UserPermissionTypes">
+          <End Role="UserPermissionTypes" Type="Self.UserPermissionTypes" Multiplicity="0..1" />
+          <End Role="UserPermissionHistory" Type="Self.UserPermissionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPermissionTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissionHistory">
+              <PropertyRef Name="PermissionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissionHistory_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+          <End Role="UserPermissionHistory" Type="Self.UserPermissionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissionHistory">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissionHistory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserPermissionHistory" Type="Self.UserPermissionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissionHistory">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users1" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserStatuses">
+          <End Role="UserStatuses" Type="Self.UserStatuses" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HR_SYSModelStoreContainer">
+          <EntitySet Name="EmployeeDesignations" EntityType="Self.EmployeeDesignations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTypes" EntityType="Self.EmployeeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayrollHeaders" EntityType="Self.PayrollHeaders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysDepartments" EntityType="Self.SysDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysGenders" EntityType="Self.SysGenders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysHolidays" EntityType="Self.SysHolidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccessGranted" EntityType="Self.UserAccessGranted" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPasswordHistory" EntityType="Self.UserPasswordHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPermissionHistory" EntityType="Self.UserPermissionHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPermissionTypes" EntityType="Self.UserPermissionTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStatuses" EntityType="Self.UserStatuses" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UserAccessGranted_UserRoles" Association="Self.FK_UserAccessGranted_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserAccessGranted" EntitySet="UserAccessGranted" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPasswordHistory_Users" Association="Self.FK_UserPasswordHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPasswordHistory" EntitySet="UserPasswordHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissionHistory_UserPermissionTypes" Association="Self.FK_UserPermissionHistory_UserPermissionTypes">
+            <End Role="UserPermissionTypes" EntitySet="UserPermissionTypes" />
+            <End Role="UserPermissionHistory" EntitySet="UserPermissionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissionHistory_UserRoles" Association="Self.FK_UserPermissionHistory_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserPermissionHistory" EntitySet="UserPermissionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissionHistory_Users" Association="Self.FK_UserPermissionHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPermissionHistory" EntitySet="UserPermissionHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users" Association="Self.FK_Users_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserStatuses" Association="Self.FK_Users_UserStatuses">
+            <End Role="UserStatuses" EntitySet="UserStatuses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HR_SYSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmployeeDesignation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NicNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="NameWithInitials" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="EmployeeTypeId" Type="Int32" />
+          <Property Name="GenderId" Type="Int32" />
+          <Property Name="DepartmentId" Type="Int32" />
+          <Property Name="DesignationId" Type="Int32" />
+          <Property Name="SalaryPackageId" Type="Int32" />
+          <Property Name="JoinedDate" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmployeeType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PayrollHeader">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PayYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PayMonth" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SysDepartment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SysGender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SysHoliday">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserAccessGranted">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserRoleId" Type="Int32" />
+          <Property Name="MainMenuId" Type="Int32" />
+          <Property Name="InterMenuId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserAccessGranted_UserRoles" FromRole="UserAccessGranted" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="UserPasswordHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="OldPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserPasswordHistory_Users" FromRole="UserPasswordHistory" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserPermissionHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="UserRoleId" Type="Int32" />
+          <Property Name="InterMenuId" Type="Int32" />
+          <Property Name="PermissionTypeId" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserPermissionType" Relationship="Self.FK_UserPermissionHistory_UserPermissionTypes" FromRole="UserPermissionHistory" ToRole="UserPermissionTypes" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserPermissionHistory_UserRoles" FromRole="UserPermissionHistory" ToRole="UserRoles" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserPermissionHistory_Users" FromRole="UserPermissionHistory" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserPermissionType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserPermissionHistories" Relationship="Self.FK_UserPermissionHistory_UserPermissionTypes" FromRole="UserPermissionTypes" ToRole="UserPermissionHistory" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserAccessGranteds" Relationship="Self.FK_UserAccessGranted_UserRoles" FromRole="UserRoles" ToRole="UserAccessGranted" />
+          <NavigationProperty Name="UserPermissionHistories" Relationship="Self.FK_UserPermissionHistory_UserRoles" FromRole="UserRoles" ToRole="UserPermissionHistory" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserRoles" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="UserRoleId" Type="Int32" />
+          <Property Name="UserStatusId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserPasswordHistories" Relationship="Self.FK_UserPasswordHistory_Users" FromRole="Users" ToRole="UserPasswordHistory" />
+          <NavigationProperty Name="UserPermissionHistories" Relationship="Self.FK_UserPermissionHistory_Users" FromRole="Users" ToRole="UserPermissionHistory" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_Users_UserRoles" FromRole="Users" ToRole="UserRoles" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_Users_Users" FromRole="Users" ToRole="Users1" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Users_Users" FromRole="Users1" ToRole="Users" />
+          <NavigationProperty Name="UserStatus" Relationship="Self.FK_Users_UserStatuses" FromRole="Users" ToRole="UserStatuses" />
+        </EntityType>
+        <EntityType Name="UserStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_UserStatuses" FromRole="UserStatuses" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_UserAccessGranted_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="UserAccessGranted" Type="Self.UserAccessGranted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccessGranted">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPasswordHistory_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserPasswordHistory" Type="Self.UserPasswordHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPasswordHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissionHistory_UserPermissionTypes">
+          <End Role="UserPermissionTypes" Type="Self.UserPermissionType" Multiplicity="0..1" />
+          <End Role="UserPermissionHistory" Type="Self.UserPermissionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserPermissionTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissionHistory">
+              <PropertyRef Name="PermissionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissionHistory_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="UserPermissionHistory" Type="Self.UserPermissionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissionHistory">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissionHistory_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserPermissionHistory" Type="Self.UserPermissionHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissionHistory">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Users1" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UserStatuses">
+          <End Role="UserStatuses" Type="Self.UserStatus" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserStatuses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HR_SYSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmployeeDesignations" EntityType="Self.EmployeeDesignation" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeTypes" EntityType="Self.EmployeeType" />
+          <EntitySet Name="PayrollHeaders" EntityType="Self.PayrollHeader" />
+          <EntitySet Name="SysDepartments" EntityType="Self.SysDepartment" />
+          <EntitySet Name="SysGenders" EntityType="Self.SysGender" />
+          <EntitySet Name="SysHolidays" EntityType="Self.SysHoliday" />
+          <EntitySet Name="UserAccessGranteds" EntityType="Self.UserAccessGranted" />
+          <EntitySet Name="UserPasswordHistories" EntityType="Self.UserPasswordHistory" />
+          <EntitySet Name="UserPermissionHistories" EntityType="Self.UserPermissionHistory" />
+          <EntitySet Name="UserPermissionTypes" EntityType="Self.UserPermissionType" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserStatuses" EntityType="Self.UserStatus" />
+          <AssociationSet Name="FK_UserAccessGranted_UserRoles" Association="Self.FK_UserAccessGranted_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserAccessGranted" EntitySet="UserAccessGranteds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPasswordHistory_Users" Association="Self.FK_UserPasswordHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPasswordHistory" EntitySet="UserPasswordHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissionHistory_UserPermissionTypes" Association="Self.FK_UserPermissionHistory_UserPermissionTypes">
+            <End Role="UserPermissionTypes" EntitySet="UserPermissionTypes" />
+            <End Role="UserPermissionHistory" EntitySet="UserPermissionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissionHistory_UserRoles" Association="Self.FK_UserPermissionHistory_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserPermissionHistory" EntitySet="UserPermissionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissionHistory_Users" Association="Self.FK_UserPermissionHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPermissionHistory" EntitySet="UserPermissionHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserRoles" Association="Self.FK_Users_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users" Association="Self.FK_Users_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Users1" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UserStatuses" Association="Self.FK_Users_UserStatuses">
+            <End Role="UserStatuses" EntitySet="UserStatuses" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HR_SYSModelStoreContainer" CdmEntityContainer="HR_SYSEntities">
+          <EntitySetMapping Name="EmployeeDesignations">
+            <EntityTypeMapping TypeName="HR_SYSModel.EmployeeDesignation">
+              <MappingFragment StoreEntitySet="EmployeeDesignations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="HR_SYSModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="NicNo" ColumnName="NicNo" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="NameWithInitials" ColumnName="NameWithInitials" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="EmployeeTypeId" ColumnName="EmployeeTypeId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="SalaryPackageId" ColumnName="SalaryPackageId" />
+                <ScalarProperty Name="JoinedDate" ColumnName="JoinedDate" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTypes">
+            <EntityTypeMapping TypeName="HR_SYSModel.EmployeeType">
+              <MappingFragment StoreEntitySet="EmployeeTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollHeaders">
+            <EntityTypeMapping TypeName="HR_SYSModel.PayrollHeader">
+              <MappingFragment StoreEntitySet="PayrollHeaders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PayYear" ColumnName="PayYear" />
+                <ScalarProperty Name="PayMonth" ColumnName="PayMonth" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysDepartments">
+            <EntityTypeMapping TypeName="HR_SYSModel.SysDepartment">
+              <MappingFragment StoreEntitySet="SysDepartments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysGenders">
+            <EntityTypeMapping TypeName="HR_SYSModel.SysGender">
+              <MappingFragment StoreEntitySet="SysGenders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysHolidays">
+            <EntityTypeMapping TypeName="HR_SYSModel.SysHoliday">
+              <MappingFragment StoreEntitySet="SysHolidays">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccessGranteds">
+            <EntityTypeMapping TypeName="HR_SYSModel.UserAccessGranted">
+              <MappingFragment StoreEntitySet="UserAccessGranted">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="MainMenuId" ColumnName="MainMenuId" />
+                <ScalarProperty Name="InterMenuId" ColumnName="InterMenuId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPasswordHistories">
+            <EntityTypeMapping TypeName="HR_SYSModel.UserPasswordHistory">
+              <MappingFragment StoreEntitySet="UserPasswordHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OldPassword" ColumnName="OldPassword" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermissionHistories">
+            <EntityTypeMapping TypeName="HR_SYSModel.UserPermissionHistory">
+              <MappingFragment StoreEntitySet="UserPermissionHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="InterMenuId" ColumnName="InterMenuId" />
+                <ScalarProperty Name="PermissionTypeId" ColumnName="PermissionTypeId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermissionTypes">
+            <EntityTypeMapping TypeName="HR_SYSModel.UserPermissionType">
+              <MappingFragment StoreEntitySet="UserPermissionTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="HR_SYSModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HR_SYSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserStatusId" ColumnName="UserStatusId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStatuses">
+            <EntityTypeMapping TypeName="HR_SYSModel.UserStatus">
+              <MappingFragment StoreEntitySet="UserStatuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
